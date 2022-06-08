@@ -11,11 +11,18 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const Form = (props) =>{
 
-    const {setCapital, setInterest, setMeses} = props;
+    const {setNombre, setCapital, setInterest, setMeses} = props;
 
     return(
         
         <View style={style.vistaForm1}>
+            <View>
+                <TextInput
+                    placeholder="Nombre Completo"
+                    style={style.nombre}
+                    onChange={(e) => setNombre(e.nativeEvent.text)}
+                />
+            </View>
 
             <View style={style.cajaSelect}>
                 <RNPickerSelect
@@ -62,7 +69,7 @@ const style = StyleSheet.create({
         paddingHorizontal: 50,
         backgroundColor: colors.PRIMARY_COLOR_DARK,
         borderRadius: 30,
-        height: 180,
+        height: 210,
         justifyContent: "center",
     },
 
@@ -102,6 +109,22 @@ const style = StyleSheet.create({
         marginLeft: -5,
         marginRight: -5,
     },
+
+    nombre: {
+        height: 40,
+        backgroundColor: "white",
+        borderWidth: 1,
+        borderColor: colors.PRIMARY_COLOR,
+        borderRadius: 5,
+        width: "105%",
+        marginRight: 5,
+        marginLeft: -5,
+        marginBottom: 10,
+        color: "black",
+        paddingHorizontal: 20,
+        marginTop: 5,
+        
+    }
 
 });
 

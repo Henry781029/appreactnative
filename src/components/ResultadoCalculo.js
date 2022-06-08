@@ -4,7 +4,7 @@ import colors from '../utils/colors';
 
 export default function ResultadoCalculo(props) {
  
- const{Capital, Interest, Meses, Total, errorMensaje} = props;
+ const{Nombre, Capital, Interest, Meses, Total, errorMensaje} = props;
     return (
     <View style={styles.content}>
       {Total && (
@@ -12,6 +12,10 @@ export default function ResultadoCalculo(props) {
             <Text style={styles.vistaresumen}>
               RESUMEN
             </Text>
+            <DataResult
+              vistaresumen="Nombre Cotizante:"
+              value ={` ${Nombre}`}
+            />
             <DataResult
               vistaresumen="Cantidad Solicitada:"
               value ={`$ ${Capital}`}

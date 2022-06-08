@@ -27,6 +27,7 @@ import colors from './src/utils/colors';
 
 const App = () => {
 
+  const [Nombre, setNombre] = useState(null);
   const [Capital, setCapital] = useState(null);
   const [Interest, setInterest] = useState(null);
   const [Meses, setMeses] = useState(null);
@@ -34,16 +35,18 @@ const App = () => {
   const [errorMensaje, seterrorMensaje] = useState('');
 
   useEffect (() =>{
-    if(Capital && Interest && Meses){
+    if(Nombre && Capital && Interest && Meses){
       calculate();
     }else{
       reset();
     }
-  }, [Capital, Interest, Meses])
+  }, [Nombre, Capital, Interest, Meses])
 
   const calculate = () =>{
     reset();
-   if(!Meses){
+    if (!Nombre){
+    seterrorMensaje ("Añade Nombre del Cotizante");
+    }else if(!Meses){
     seterrorMensaje ("Añade los meses de plazo del monto");
     }else if(!Capital){
       seterrorMensaje ("añade la cantidad que quieres solicitar");
@@ -73,6 +76,7 @@ const App = () => {
    <SafeAreaView style={estilo.safearea}>
       <Text style={estilo.titulo}>COTIZADOR DE PRESTAMOS</Text>
       <Form 
+      setNombre = {setNombre}
       setCapital = {setCapital}
       setInterest = {setInterest}
       setMeses = {setMeses}
@@ -80,6 +84,7 @@ const App = () => {
     </SafeAreaView>
 
    <ResultadoCalculo
+      Nombre = {Nombre}
       Capital = {Capital}
       Interest = {Interest}
       Meses = {Meses}
